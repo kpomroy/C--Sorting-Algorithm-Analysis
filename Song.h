@@ -79,33 +79,33 @@ public:
 
     //Overloaded Operators
     friend ostream& operator << (ostream& os, const Song& s) {
-        os << s.getTitle() << " by ";
-        os << s.getArtist() << endl;
+        os << s.getTitle() << " by " << s.getArtist() << " days since release: " << s.getDays();
+        return os;
 
     }
 
     friend bool operator <(const Song& s1, const Song& s2) {
-        return (s1.getPosition() < s2.getPosition());
+        return (s1.getDays() < s2.getDays());
     }
 
     friend bool operator <=(const Song& s1, const Song& s2) {
-        return (s1.getPosition() < s2.getPosition() || s1.getPosition() == s2.getPosition());
+        return (s1.getDays() < s2.getDays() || s1.getDays() == s2.getDays());
     }
 
     friend bool operator >(const Song& s1, const Song& s2) {
-        return (s1.getPosition() > s2.getPosition());
+        return (s1.getDays() > s2.getDays());
     }
 
     friend bool operator >=(const Song& s1, const Song& s2) {
-        return (s1.getPosition() > s2.getPosition() || s1.getPosition() == s2.getPosition());
+        return (s1.getDays() > s2.getDays() || s1.getDays() == s2.getDays());
     }
 
     friend bool operator ==(const Song& s1, const Song& s2) {
-        return (s1.getPosition() == s2.getPosition());
+        return (s1.getDays() == s2.getDays());
     }
 
     friend bool operator !=(const Song& s1, const Song& s2) {
-        return (s1.getPosition() != s2.getPosition());
+        return (s1.getDays() != s2.getDays());
     }
 
 };
