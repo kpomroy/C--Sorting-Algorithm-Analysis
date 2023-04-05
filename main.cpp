@@ -23,7 +23,7 @@ int main() {
     sortingData << "Vector Size,Algorithm,Reads,Writes,Duration" << endl;
     int vecSize;
 
-    for(int i = 0; i < 11; ++i) {
+    for(int i = 1; i < 11; ++i) {
         vecSize = 100*i;
         songs.resize(vecSize);
         //Bubble Sort
