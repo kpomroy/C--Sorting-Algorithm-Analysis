@@ -4,7 +4,6 @@
 #include "mergeSort.h"
 #include "twoSort.h"
 #include "Song.h"
-#include <fstream>
 #include <vector>
 
 using namespace std;
@@ -20,37 +19,59 @@ int main() {
     //Create output csv file
     ofstream sortingData;
     sortingData.open("../data/sortingData.csv");
+    //make csv header line
+    sortingData << "Vector Size,Algorithm,Reads,Writes,Duration" << endl;
+    int vecSize;
 
-    sortingData << "Algorithm,Reads,Writes" << endl;
-    //Bubble Sort
-    reads = 0;
-    writes = 0;
-    bubbleSort(songs, reads, writes);
-    sortingData << "Bubble Sort," << reads << "," << writes << endl;
+    for(int i = 1; i < 11; ++i) {
+        vecSize = 100*i;
+        songs.resize(vecSize);
+        //Bubble Sort
+        reads = 0;
+        writes = 0;
+        auto start = std::chrono::high_resolution_clock::now();
+        bubbleSort(songs, reads, writes);
+        auto stop = std::chrono::high_resolution_clock::now();
+        auto duration = duration_cast<std::chrono::milliseconds>(stop - start);
+        sortingData << vecSize << ",Bubble Sort," << reads << "," << writes << "," << duration.count() << endl;
 
-    //Selection Sort
-    reads = 0;
-    writes = 0;
-    selectionSort(songs, reads, writes);
-    sortingData << "Selection Sort," << reads << "," << writes << endl;
 
-    //Merge Sort
-    reads = 0;
-    writes = 0;
-    mergeSort(songs, reads, writes);
-    sortingData << "Merge Sort," << reads << "," << writes << endl;
+        //Selection Sort
+        reads = 0;
+        writes = 0;
+        start = std::chrono::high_resolution_clock::now();
+        selectionSort(songs, reads, writes);
+        stop = std::chrono::high_resolution_clock::now();
+        duration = duration_cast<std::chrono::milliseconds>(stop - start);
+        sortingData << vecSize << ",Selection Sort," << reads << "," << writes << "," << duration.count() << endl;
 
-    //Heap Sort
-    reads = 0;
-    writes = 0;
-    heapSort(songs, reads, writes);
-    sortingData << "Heap Sort," << reads << "," << writes << endl;
+        //Merge Sort
+        reads = 0;
+        writes = 0;
+        start = std::chrono::high_resolution_clock::now();
+        mergeSort(songs, reads, writes);
+        stop = std::chrono::high_resolution_clock::now();
+        duration = duration_cast<std::chrono::milliseconds>(stop - start);
+        sortingData << vecSize << ",Merge Sort," << reads << "," << writes << "," << duration.count() << endl;
 
-    //Two Sort
-    reads = 0;
-    writes = 0;
-    twoSort(songs, reads, writes);
-    sortingData << "Two Sort," << reads << "," << writes << endl;
+        //Heap Sort
+        reads = 0;
+        writes = 0;
+        start = std::chrono::high_resolution_clock::now();
+        heapSort(songs, reads, writes);
+        stop = std::chrono::high_resolution_clock::now();
+        duration = duration_cast<std::chrono::milliseconds>(stop - start);
+        sortingData << vecSize << ",Heap Sort," << reads << "," << writes << "," << duration.count() << endl;
+
+        //Two Sort
+        reads = 0;
+        writes = 0;
+        start = std::chrono::high_resolution_clock::now();
+        twoSort(songs, reads, writes);
+        stop = std::chrono::high_resolution_clock::now();
+        duration = duration_cast<std::chrono::milliseconds>(stop - start);
+        sortingData << vecSize << ",Two Sort," << reads << "," << writes << "," << duration.count() << endl;
+    };
 
     sortingData.close();
 
