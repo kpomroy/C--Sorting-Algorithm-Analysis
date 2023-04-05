@@ -79,7 +79,8 @@ public:
 
     //Overloaded Operators
     friend ostream& operator << (ostream& os, const Song& s) {
-        os << s.getTitle() << " by " << s.getArtist() << " days since release: " << s.getDays();
+        os << s.getDays();
+        //os << s.getTitle() << " by " << s.getArtist() << " days since release: " << s.getDays();
         return os;
 
     }
