@@ -1,0 +1,37 @@
+---
+title: "Sorting Algorithm Analysis"
+output: html_document
+date: "2023-04-05"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+data <- read.csv("sortingData.csv") 
+groupedData <- data %>% group_by(Algorithm) %>% summarize(Duration)
+```
+```{r}
+reads <- ggplot(data = data, mapping = aes(x = Vector.Size, y = Reads, color = Algorithm)) + geom_point(position = "dodge2") + labs(x = "Vector Size", y = "Reads", title = "Number of Reads for Each Sorting Algorithm", color = NULL) + facet_wrap(vars(Algorithm)) + theme(legend.position = "none") + scale_x_continuous(breaks = c(200,400,600,800,1000))
+reads
+
+writes <- ggplot(data = data, mapping = aes(x = Vector.Size, y = Writes, color = Algorithm)) + geom_point(position = "dodge2") + labs(x = "Vector Size", y = "Writes", title = "Number of Writes for Each Sorting Algorithm", color = NULL) + facet_wrap(vars(Algorithm)) + theme(legend.position = "none") + scale_x_continuous(breaks = c(200,400,600,800,1000))
+writes
+```
+
+
+```{r}
+duration <- ggplot(data = data, mapping = aes(x = Vector.Size, y = Duration, color = Algorithm)) + geom_point(position = "dodge2") + labs(x = "Vector Size", y = "Time (milliseconds)", title = "Duration of Each Sorting Algorithm", color = NULL) + facet_wrap(vars(Algorithm)) + theme(legend.position = "none") + scale_x_continuous(breaks = c(200,400,600,800,1000))
+duration
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
