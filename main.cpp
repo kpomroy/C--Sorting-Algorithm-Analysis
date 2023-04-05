@@ -2,7 +2,6 @@
 #include "heapSort.h"
 #include "selectionSort.h"
 #include "mergeSort.h"
-#include "insertionSort.h"
 #include "twoSort.h"
 #include "Song.h"
 #include <fstream>
@@ -18,35 +17,42 @@ int main() {
     // Get data from csv of top 1000 streamed songs on Spotify
     getDataFromFile("../spotify_songs.csv", songs);
 
+    //Create output csv file
+    ofstream sortingData;
+    sortingData.open("../data/sortingData.csv");
+
+    sortingData << "Algorithm,Reads,Writes" << endl;
     //Bubble Sort
     reads = 0;
     writes = 0;
     bubbleSort(songs, reads, writes);
-    cout << "Bubble Sort: reads: " << reads << " writes: " << writes;
+    sortingData << "Bubble Sort," << reads << "," << writes << endl;
 
     //Selection Sort
     reads = 0;
     writes = 0;
     selectionSort(songs, reads, writes);
-    cout << "Selection Sort: reads: " << reads << " writes: " << writes;
+    sortingData << "Selection Sort," << reads << "," << writes << endl;
 
     //Merge Sort
     reads = 0;
     writes = 0;
     mergeSort(songs, reads, writes);
-    cout << "Merge Sort: reads: " << reads << " writes: " << writes;
+    sortingData << "Merge Sort," << reads << "," << writes << endl;
 
     //Heap Sort
     reads = 0;
     writes = 0;
     heapSort(songs, reads, writes);
-    cout << "Heap Sort: reads: " << reads << " writes: " << writes;
+    sortingData << "Heap Sort," << reads << "," << writes << endl;
 
     //Two Sort
     reads = 0;
     writes = 0;
     twoSort(songs, reads, writes);
-    cout << "Two Sort: reads: " << reads << " writes: " << writes;
+    sortingData << "Two Sort," << reads << "," << writes << endl;
+
+    sortingData.close();
 
     return 0;
 }
