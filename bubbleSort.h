@@ -28,7 +28,7 @@ void bubbleSort(vector<Comparable> vec, int &reads, int &writes) {
         }
         // Update numPasses
         ++numPasses;
-        printVec(vec);
+//        printVec(vec);
     }
 }
 

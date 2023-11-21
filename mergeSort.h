@@ -55,7 +55,7 @@ void mergeSortRec(vector<Comparable> &vec, int startIndex, int endIndex, int &re
         writes += 1;
     }
 
-    printVec(vec);
+//    printVec(vec);
 }
 
 template<typename Comparable>

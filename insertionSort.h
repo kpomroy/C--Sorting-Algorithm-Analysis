@@ -23,7 +23,7 @@ void insertionSort(vector<Comparable> vec, int &reads, int &writes) {
         vec[insertIndex + 1] = toBeInserted; // 1 read, 1 write
         ++reads;
         ++writes;
-        printVec(vec);
+//        printVec(vec);
     }
 }
 

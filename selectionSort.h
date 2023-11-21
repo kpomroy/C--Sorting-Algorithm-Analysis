@@ -24,7 +24,7 @@ void selectionSort(vector<Comparable> vec, int &reads, int &writes) {
         vec[minIndex] = temp; // 1 read, 1 write
         reads += 3;
         writes += 3;
-        printVec(vec);
+//        printVec(vec);
     }
 }
 

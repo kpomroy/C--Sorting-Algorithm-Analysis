@@ -49,7 +49,7 @@ vector<Comparable> heapSort(vector<Comparable> items, int &reads, int &writes) {
         n = items.size();
         percolateDown(items, i, n, child, tmp, reads, writes);
     }
-    printVec(items);
+//    printVec(items);
     // keep deleting the max
     for (j = items.size() - 1; j > 0; --j) {
         // swap the maximum out
@@ -61,7 +61,7 @@ vector<Comparable> heapSort(vector<Comparable> items, int &reads, int &writes) {
         i = 0;
         percolateDown(items, i, j, child, tmp, reads, writes);
 
-        printVec(items);
+//        printVec(items);
     }
     return items;
 }

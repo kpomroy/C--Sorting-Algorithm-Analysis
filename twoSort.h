@@ -25,7 +25,7 @@ void insertionSort2(vector<Song> vec, int &reads, int &writes) {
         vec[insertIndex + 1] = toBeInserted; // 1 read, 1 write
         ++reads;
         ++writes;
-        printVec(vec);
+//        printVec(vec);
     }
 }
 void twoSort(vector<Song> vec, int &reads, int &writes) {
